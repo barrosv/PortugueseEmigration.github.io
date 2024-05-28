@@ -100,15 +100,6 @@ var polygonSeries = chart.series.push(
   })
 );
 
-// Set ocean fill
-chart.series.push(am5map.MapPolygonSeries.new(root, {
-  geoJSON: am5geodata_continentsLow,
-  exclude: ["AQ"],
-  fill: am5.color(0x8ad0ff), // Ocean color
-  fillOpacity: 1,
-  strokeOpacity: 0
-}));
-
 var bubbleSeries = chart.series.push(
   am5map.MapPointSeries.new(root, {
     valueField: "value",
