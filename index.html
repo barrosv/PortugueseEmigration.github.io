@@ -47,7 +47,7 @@ var data = [
     value: 100
   }, {
     id: "BR",
-    name: "Brazil",
+    name: "Brasil",
     value: 100
   }, {
     id: "ZA",
@@ -71,8 +71,13 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {}));
 
 // Create title
 var waveCount = 1;
+var titles = [
+  "Wave 1 (1850s - 1930s)",
+  "Wave 2 (1950s - 1974)",
+  "Wave 3 (1974 - 2001)"
+];
 var title = root.container.children.push(am5.Label.new(root, {
-  text: "Wave " + waveCount,
+  text: titles[waveCount - 1],
   fontSize: 25,
   fontWeight: "bold",
   textAlign: "center",
@@ -175,7 +180,7 @@ bubbleSeries.data.setAll(data);
 updateData();
 setInterval(function() {
   updateData();
-}, 2000);
+}, 5000); // Update data every 5 seconds
 
 function updateData() {
   var newData = [];
@@ -188,7 +193,7 @@ function updateData() {
       { id: "IN", name: "India", value: 50 },
       { id: "AU", name: "Australia", value: 80 },
       { id: "CA", name: "Canada", value: 70 },
-      { id: "BR", name: "Brazil", value: 65 },
+      { id: "BR", name: "Brasil", value: 65 },
       { id: "ZA", name: "South Africa", value: 55 },
       { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
       { id: "FR", name: "France", value: 85 }
@@ -201,7 +206,7 @@ function updateData() {
       { id: "IN", name: "India", value: 90 },
       { id: "AU", name: "Australia", value: 60 },
       { id: "CA", name: "Canada", value: 50 },
-      { id: "BR", name: "Brazil", value: 85 },
+      { id: "BR", name: "Brasil", value: 85 },
       { id: "ZA", name: "South Africa", value: 70 },
       { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
       { id: "FR", name: "France", value: 45 }
@@ -214,7 +219,7 @@ function updateData() {
       { id: "IN", name: "India", value: 85 },
       { id: "AU", name: "Australia", value: 50 },
       { id: "CA", name: "Canada", value: 75 },
-      { id: "BR", name: "Brazil", value: 60 },
+      { id: "BR", name: "Brasil", value: 60 },
       { id: "ZA", name: "South Africa", value: 80 },
       { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
       { id: "FR", name: "France", value: 70 }
@@ -225,7 +230,7 @@ function updateData() {
 
   // Update wave count and title
   waveCount = (waveCount % 3) + 1;
-  title.set("text", "Wave " + waveCount);
+  title.set("text", titles[waveCount - 1]);
 }
 
 }); // end am5.ready()
