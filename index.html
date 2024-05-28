@@ -128,14 +128,16 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
   } else {
     var star = container.children.push(
       am5.Star.new(root, {
-        radius: 15,
+        radius: 10, // Smaller star size
         points: 5,
-        innerRadius: 7,
-        fill: am5.color(0xffff00), // Yellow star
+        innerRadius: 5,
+        fill: am5.color(0x8ad0ff), // Change fill to hex code 0x8ad0ff
+        stroke: am5.color(0x000000), // Black outline
+        strokeWidth: 2,
         centerX: am5.p50,
         centerY: am5.p50,
-        x: 0, // Adjust x to position near Lisbon
-        y: 0 // Adjust y to position near Lisbon
+        x: -20, // Adjust x to position near Lisbon
+        y: -10 // Adjust y to position near Lisbon
       })
     );
   }
