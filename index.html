@@ -71,7 +71,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {}));
 
 // Create title
 var waveCount = 1;
-var title = chart.children.unshift(am5.Label.new(root, {
+var title = root.container.children.push(am5.Label.new(root, {
   text: "Wave " + waveCount,
   fontSize: 25,
   fontWeight: "bold",
@@ -79,7 +79,8 @@ var title = chart.children.unshift(am5.Label.new(root, {
   x: am5.p50,
   centerX: am5.p50,
   paddingTop: 20,
-  paddingBottom: 20
+  paddingBottom: 20,
+  layer: 100 // Ensure the title is in the foreground
 }));
 
 var polygonSeries = chart.series.push(
@@ -105,32 +106,34 @@ var circleTemplate = am5.Template.new({});
 bubbleSeries.bullets.push(function(root, series, dataItem) {
   var container = am5.Container.new(root, {});
 
-  var circle = container.children.push(
-    am5.Circle.new(root, {
-      radius: 20,
-      fillOpacity: 0.7,
-      fill: am5.color(0xff0000),
-      cursorOverStyle: "pointer",
-      tooltipText: `{name}: [bold]{value}[/]`
-    }, circleTemplate)
-  );
+  if (dataItem.get("id") !== "PT") {
+    var circle = container.children.push(
+      am5.Circle.new(root, {
+        radius: 20,
+        fillOpacity: 0.7,
+        fill: am5.color(0xff0000),
+        cursorOverStyle: "pointer",
+        tooltipText: `{name}: [bold]{value}[/]`
+      }, circleTemplate)
+    );
+
+    circle.on("radius", function(radius) {
+      countryLabel.set("x", radius);
+    });
+  }
 
   var countryLabel = container.children.push(
     am5.Label.new(root, {
       text: "{name}",
-      paddingLeft: 5,
+      paddingLeft: dataItem.get("id") === "PT" ? 0 : 5,
       populateText: true,
       fillOpacity: 1,
-      fill: am5.color(0xffffff),
+      fill: am5.color(0x000000), // All labels in black
       fontWeight: "bold",
       fontSize: 13,
       centerY: am5.p50
     })
   );
-
-  circle.on("radius", function(radius) {
-    countryLabel.set("x", radius);
-  });
 
   return am5.Bullet.new(root, {
     sprite: container,
@@ -139,17 +142,19 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
 });
 
 bubbleSeries.bullets.push(function(root, series, dataItem) {
-  return am5.Bullet.new(root, {
-    sprite: am5.Label.new(root, {
-      text: "{value.formatNumber('#.')}",
-      fill: am5.color(0xffff00),
-      populateText: true,
-      centerX: am5.p50,
-      centerY: am5.p50,
-      textAlign: "center"
-    }),
-    dynamic: true
-  });
+  if (dataItem.get("id") !== "PT") {
+    return am5.Bullet.new(root, {
+      sprite: am5.Label.new(root, {
+        text: "{value.formatNumber('#.')}",
+        fill: am5.color(0xffff00),
+        populateText: true,
+        centerX: am5.p50,
+        centerY: am5.p50,
+        textAlign: "center"
+      }),
+      dynamic: true
+    });
+  }
 });
 
 // minValue and maxValue must be set for the animations to work
@@ -185,7 +190,7 @@ function updateData() {
       { id: "CA", name: "Canada", value: 70 },
       { id: "BR", name: "Brazil", value: 65 },
       { id: "ZA", name: "South Africa", value: 55 },
-      { id: "PT", name: "Portugal", value: 40 },
+      { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
       { id: "FR", name: "France", value: 85 }
     ];
   } else if (waveCount === 2) {
@@ -198,7 +203,7 @@ function updateData() {
       { id: "CA", name: "Canada", value: 50 },
       { id: "BR", name: "Brazil", value: 85 },
       { id: "ZA", name: "South Africa", value: 70 },
-      { id: "PT", name: "Portugal", value: 75 },
+      { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
       { id: "FR", name: "France", value: 45 }
     ];
   } else if (waveCount === 3) {
@@ -211,7 +216,7 @@ function updateData() {
       { id: "CA", name: "Canada", value: 75 },
       { id: "BR", name: "Brazil", value: 60 },
       { id: "ZA", name: "South Africa", value: 80 },
-      { id: "PT", name: "Portugal", value: 90 },
+      { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
       { id: "FR", name: "France", value: 70 }
     ];
   }
