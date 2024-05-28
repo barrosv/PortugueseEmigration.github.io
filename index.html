@@ -160,12 +160,12 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
   } else {
     var star = container.children.push(
       am5.Star.new(root, {
-        radius: 9, // Smaller star size
+        radius: 5, // Smaller star size
         points: 5,
-        innerRadius: 5,
+        innerRadius: 2.5,
         fill: am5.color(0xffff00), // Yellow fill
         stroke: am5.color(0x000000), // Black outline
-        strokeWidth: 2,
+        strokeWidth: 1,
         centerX: am5.p50,
         centerY: am5.p50,
         x: 0, // Adjust x to position near Lisbon
@@ -292,6 +292,12 @@ function updateData() {
 
 }); // end am5.ready()
 </script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
+
+</body>
+</html>
 
 <!-- HTML -->
 <div id="chartdiv"></div>
