@@ -61,7 +61,27 @@ var data = [
     id: "FR",
     name: "France",
     value: 100
-  }
+  }, {
+    id: "CV",
+    name: "Cape Verde",
+    value: 100
+  }, {
+    id: "GW",
+    name: "Guinea-Bissau",
+    value: 100
+  }, {
+    id: "ST",
+    name: "Sao Tome and Principe",
+    value: 100
+  }, {
+    id: "AO",
+    name: "Angola",
+    value: 100
+  }, {
+    id: "MZ",
+    name: "Mozambique",
+    value: 100
+  }  
 ];
 
 var root = am5.Root.new("chartdiv");
@@ -220,16 +240,20 @@ function updateData() {
 
   if (waveCount === 1) {
     newData = [
-      { id: "US", name: "United States", value: 75 },
-      { id: "GB", name: "United Kingdom", value: 60 },
-      { id: "CN", name: "China", value: 90 },
-      { id: "IN", name: "India", value: 50 },
-      { id: "AU", name: "Australia", value: 80 },
-      { id: "CA", name: "Canada", value: 70 },
-      { id: "BR", name: "Brazil", value: 65 },
-      { id: "ZA", name: "South Africa", value: 55 },
+      { id: "US", name: "United States", value: 176528 },
+      { id: "GB", name: "United Kingdom", value: 26888 },
+      { id: "CN", name: "China", value: 920 },
+      { id: "IN", name: "India", value: 550 },
+      { id: "AU", name: "Australia", value: 880 },
+      { id: "CA", name: "Canada", value: 70302 },
+      { id: "BR", name: "Brazil", value: 1057009 },
       { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
-      { id: "FR", name: "France", value: 85 }
+      { id: "FR", name: "France", value: 74667 },
+      { id: "CV", name: "Cape Verde", value: 925 },
+      { id: "GW", name: "Guinea-Bissau", value: 781 },
+      { id: "ST", name: "Sao Tome and Principe", value: 564 },
+      { id: "AO", name: "Angola", value: 8170 },
+      { id: "MZ", name: "Mozambique", value: 6903 }
     ];
   } else if (waveCount === 2) {
     newData = [
