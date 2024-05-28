@@ -135,9 +135,9 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
       fillOpacity: 1,
       fill: am5.color(0x000000), // All labels in black
       fontWeight: "bold",
-      fontSize: dataItem.get("id") === "PT" ? 20 : 13, // Larger font for Portugal
+      fontSize: 13, // Font size same for all labels
       centerY: am5.p50,
-      x: dataItem.get("id") === "PT" ? -10 : 5, // Position Portugal label to the left
+      x: dataItem.get("id") === "PT" ? -30 : 5, // Position Portugal label to the left
       centerX: dataItem.get("id") === "PT" ? am5.p100 : am5.p50 // Align left for Portugal
     })
   );
