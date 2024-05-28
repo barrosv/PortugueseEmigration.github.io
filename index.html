@@ -96,9 +96,17 @@ var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
     geoJSON: am5geodata_worldLow,
     exclude: ["AQ"],
-    fill: am5.color(0x009900) // Set the background fill for countries
+    fill: am5.color(0x009900), // Set the background fill for countries
+    stroke: am5.color(0x8ad0ff), // Stroke color for country borders
+    strokeWidth: 1
   })
 );
+
+// Update chart background fill
+chart.chartContainer.set("background", am5.Rectangle.new(root, {
+  fill: am5.color(0x8ad0ff), // Fill for oceans and bodies of water
+  fillOpacity: 1
+}));
 
 var bubbleSeries = chart.series.push(
   am5map.MapPointSeries.new(root, {
