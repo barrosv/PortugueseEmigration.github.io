@@ -109,8 +109,21 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
       }, circleTemplate)
     );
 
+    var countryLabel = container.children.push(
+      am5.Label.new(root, {
+        text: "{name}",
+        populateText: true,
+        fillOpacity: 1,
+        fill: am5.color(0x000000), // All labels in black
+        fontWeight: "bold",
+        fontSize: 13, // Font size same for all labels
+        centerY: am5.p50,
+        centerX: am5.p50
+      })
+    );
+
     circle.on("radius", function(radius) {
-      countryLabel.set("x", radius + 5); // Move the label next to the circle
+      countryLabel.set("y", -radius - 10); // Position the label above the circle
     });
   } else {
     var star = container.children.push(
@@ -127,25 +140,6 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
         y: 0 // Adjust y to position near Lisbon
       })
     );
-  }
-
-  var countryLabel = container.children.push(
-    am5.Label.new(root, {
-      text: "{name}",
-      paddingLeft: 5,
-      populateText: true,
-      fillOpacity: 1,
-      fill: am5.color(0x000000), // All labels in black
-      fontWeight: "bold",
-      fontSize: 13, // Font size same for all labels
-      centerY: am5.p50,
-      x: 5, // Default x position for other countries
-      centerX: am5.p50
-    })
-  );
-
-  if (dataItem.get("id") === "PT") {
-    countryLabel.set("visible", false); // Hide label for Portugal
   }
 
   return am5.Bullet.new(root, {
