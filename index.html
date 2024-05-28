@@ -6,7 +6,7 @@
 <style>
 #chartdiv {
   width: 100%;
-  height: 600px
+  height: 600px;
 }
 </style>
 
@@ -21,71 +21,22 @@
 am5.ready(function() {
 
 var data = [
-  {
-    id: "US",
-    name: "United States",
-    value: 100
-  }, {
-    id: "GB",
-    name: "United Kingdom",
-    value: 100
-  }, {
-    id: "CN",
-    name: "China",
-    value: 100
-  }, {
-    id: "IN",
-    name: "India",
-    value: 100
-  }, {
-    id: "AU",
-    name: "Australia",
-    value: 100
-  }, {
-    id: "CA",
-    name: "Canada",
-    value: 100
-  }, {
-    id: "BR",
-    name: "Brazil",
-    value: 100
-  }, {
-    id: "ZA",
-    name: "South Africa",
-    value: 100
-  }, {
-    id: "PT",
-    name: "Portugal",
-    value: 100
-  }, {
-    id: "FR",
-    name: "France",
-    value: 100
-  }, {
-    id: "CV",
-    name: "Cape Verde",
-    value: 100
-  }, {
-    id: "GW",
-    name: "Guinea-Bissau",
-    value: 100
-  }, {
-    id: "ST",
-    name: "Sao Tome and Principe",
-    value: 100
-  }, {
-    id: "AO",
-    name: "Angola",
-    value: 100
-  }, {
-    id: "MZ",
-    name: "Mozambique",
-    value: 100
-  }, {
-    id: "DE",
-    name: "Germany",
-    value: 100
-  }    
+  { id: "US", name: "United States", value: 100 },
+  { id: "GB", name: "United Kingdom", value: 100 },
+  { id: "CN", name: "China", value: 100 },
+  { id: "IN", name: "India", value: 100 },
+  { id: "AU", name: "Australia", value: 100 },
+  { id: "CA", name: "Canada", value: 100 },
+  { id: "BR", name: "Brazil", value: 100 },
+  { id: "ZA", name: "South Africa", value: 100 },
+  { id: "PT", name: "Portugal", value: 100 },
+  { id: "FR", name: "France", value: 100 },
+  { id: "CV", name: "Cape Verde", value: 100 },
+  { id: "GW", name: "Guinea-Bissau", value: 100 },
+  { id: "ST", name: "Sao Tome and Principe", value: 100 },
+  { id: "AO", name: "Angola", value: 100 },
+  { id: "MZ", name: "Mozambique", value: 100 },
+  { id: "DE", name: "Germany", value: 100 }
 ];
 
 var root = am5.Root.new("chartdiv");
@@ -159,7 +110,7 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
     );
 
     circle.on("radius", function(radius) {
-      countryLabel.set("x", radius);
+      countryLabel.set("x", radius + 5); // Move the label next to the circle
     });
   } else {
     var star = container.children.push(
@@ -225,9 +176,9 @@ bubbleSeries.set("heatRules", [
     target: circleTemplate,
     dataField: "value",
     min: 5,
-    max: 25,
+    max: 50, // Increased max to ensure larger circles for larger values
     minValue: 0,
-    maxValue: 5000000,
+    maxValue: 9000000, // Adjusted maxValue based on provided data
     key: "radius"
   }
 ]);
@@ -242,7 +193,25 @@ setInterval(function() {
 function updateData() {
   var newData = [];
 
-  if (waveCount === 1) { //Wave 2
+  if (waveCount === 1) { //Wave 1
+    newData = [
+      { id: "US", name: "United States", value: 176528 },
+      { id: "GB", name: "United Kingdom", value: 26888 },
+      { id: "CN", name: "China", value: 920 },
+      { id: "IN", name: "India", value: 550 },
+      { id: "CA", name: "Canada", value: 70302 },
+      { id: "BR", name: "Brazil", value: 1057009 },
+      { id: "ZA", name: "South Africa", value: 80 },
+      { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
+      { id: "FR", name: "France", value: 74667 },
+      { id: "CV", name: "Cape Verde", value: 925 },
+      { id: "GW", name: "Guinea-Bissau", value: 781 },
+      { id: "ST", name: "Sao Tome and Principe", value: 564 },
+      { id: "AO", name: "Angola", value: 8170 },
+      { id: "MZ", name: "Mozambique", value: 6903 },
+      { id: "DE", name: "Germany", value: 100 }
+    ];
+  } else if (waveCount === 2) { //Wave 2
     newData = [
       { id: "US", name: "United States", value: 126706 },
       { id: "GB", name: "United Kingdom", value: 31763 },
@@ -259,7 +228,7 @@ function updateData() {
       { id: "MZ", name: "Mozambique", value: 177839 },
       { id: "DE", name: "Germany", value: 183931 }
     ];
-  } else if (waveCount === 2) { //WAVE 3
+  } else if (waveCount === 3) { //Wave 3
     newData = [
       { id: "US", name: "United States", value: 4000000 },
       { id: "GB", name: "United Kingdom", value: 8000000 },
@@ -274,24 +243,8 @@ function updateData() {
       { id: "GW", name: "Guinea-Bissau", value: 781 },
       { id: "ST", name: "Sao Tome and Principe", value: 564 },
       { id: "AO", name: "Angola", value: 8170 },
-      { id: "MZ", name: "Mozambique", value: 6903 }
-    ];
-  } else if (waveCount === 3) { //WAVE 1
-    newData = [
-      { id: "US", name: "United States", value: 176528 },
-      { id: "GB", name: "United Kingdom", value: 26888 },
-      { id: "CN", name: "China", value: 920 },
-      { id: "IN", name: "India", value: 550 },
-      { id: "CA", name: "Canada", value: 70302 },
-      { id: "BR", name: "Brazil", value: 1057009 },
-      { id: "ZA", name: "South Africa", value: 80 },
-      { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
-      { id: "FR", name: "France", value: 74667 },
-      { id: "CV", name: "Cape Verde", value: 925 },
-      { id: "GW", name: "Guinea-Bissau", value: 781 },
-      { id: "ST", name: "Sao Tome and Principe", value: 564 },
-      { id: "AO", name: "Angola", value: 8170 },
-      { id: "MZ", name: "Mozambique", value: 6903 }
+      { id: "MZ", name: "Mozambique", value: 6903 },
+      { id: "DE", name: "Germany", value: 100 }
     ];
   }
 
@@ -304,12 +257,6 @@ function updateData() {
 
 }); // end am5.ready()
 </script>
-
-<!-- HTML -->
-<div id="chartdiv"></div>
-
-</body>
-</html>
 
 <!-- HTML -->
 <div id="chartdiv"></div>
