@@ -122,9 +122,34 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
       })
     );
 
-    circle.on("radius", function(radius) {
-      countryLabel.set("y", -radius - 10); // Position the label above the circle
-    });
+    // Position the labels based on the country
+    switch(dataItem.get("id")) {
+      case "FR":
+        circle.on("radius", function(radius) {
+          countryLabel.set("y", radius + 10); // Position the label below the circle
+        });
+        break;
+      case "DE":
+        circle.on("radius", function(radius) {
+          countryLabel.set("x", radius + 10); // Position the label to the right of the circle
+        });
+        break;
+      case "GW":
+        circle.on("radius", function(radius) {
+          countryLabel.set("x", radius + 10); // Position the label to the right of the circle
+        });
+        break;
+      case "AO":
+        circle.on("radius", function(radius) {
+          countryLabel.set("x", -radius - 10); // Position the label to the left of the circle
+        });
+        break;
+      default:
+        circle.on("radius", function(radius) {
+          countryLabel.set("y", -radius - 10); // Default position above the circle
+        });
+        break;
+    }
   } else {
     var star = container.children.push(
       am5.Star.new(root, {
