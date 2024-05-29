@@ -28,7 +28,6 @@ var data = [
   { id: "AU", name: "Australia", value: 100 },
   { id: "CA", name: "Canada", value: 100 },
   { id: "BR", name: "Brazil", value: 100 },
-  { id: "ZA", name: "South Africa", value: 100 },
   { id: "PT", name: "Portugal", value: 100 },
   { id: "FR", name: "France", value: 100 },
   { id: "CV", name: "Cape Verde", value: 100 },
@@ -36,7 +35,9 @@ var data = [
   { id: "ST", name: "Sao Tome and Principe", value: 100 },
   { id: "AO", name: "Angola", value: 100 },
   { id: "MZ", name: "Mozambique", value: 100 },
-  { id: "DE", name: "Germany", value: 100 }
+  { id: "DE", name: "Germany", value: 100 },
+  { id: "AU", name: "Australia", value: 100 }, // Australia
+  { id: "CH", name: "Switzerland", value: 100 } // Switzerland
 ];
 
 var root = am5.Root.new("chartdiv");
@@ -220,7 +221,6 @@ function updateData() {
       { id: "IN", name: "India", value: 550 },
       { id: "CA", name: "Canada", value: 70302 },
       { id: "BR", name: "Brazil", value: 1057009 },
-      { id: "ZA", name: "South Africa", value: 80 },
       { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
       { id: "FR", name: "France", value: 74667 },
       { id: "CV", name: "Cape Verde", value: 925 },
@@ -228,7 +228,9 @@ function updateData() {
       { id: "ST", name: "Sao Tome and Principe", value: 564 },
       { id: "AO", name: "Angola", value: 8170 },
       { id: "MZ", name: "Mozambique", value: 6903 },
-      { id: "DE", name: "Germany", value: 100 }
+      { id: "DE", name: "Germany", value: 100 },
+      { id: "AU", name: "Australia", value: 0 }, // Australia
+      { id: "CH", name: "Switzerland", value: 0 } // Switzerland
     ];
   } else if (waveCount === 2) { //Wave 2
     newData = [
@@ -245,25 +247,28 @@ function updateData() {
       { id: "ST", name: "Sao Tome and Principe", value: 11678 },
       { id: "AO", name: "Angola", value: 439993 },
       { id: "MZ", name: "Mozambique", value: 177839 },
-      { id: "DE", name: "Germany", value: 183931 }
+      { id: "DE", name: "Germany", value: 183931 },
+      { id: "AU", name: "Australia", value: 0 }, // Australia
+      { id: "CH", name: "Switzerland", value: 0 } // Switzerland
     ];
   } else if (waveCount === 3) { //Wave 3
     newData = [
-      { id: "US", name: "United States", value: 4000000 },
-      { id: "GB", name: "United Kingdom", value: 8000000 },
-      { id: "CN", name: "China", value: 5500000 },
-      { id: "IN", name: "India", value: 9000000 },
-      { id: "CA", name: "Canada", value: 5000000 },
-      { id: "BR", name: "Brazil", value: 8500000 },
-      { id: "ZA", name: "South Africa", value: 7000000 },
+      { id: "US", name: "United States", value: 124777 },
+      { id: "GB", name: "United Kingdom", value: 66908 },
+      { id: "CN", name: "China", value: 0 },
+      { id: "IN", name: "India", value: 0 },
+      { id: "CA", name: "Canada", value: 115499 },
+      { id: "BR", name: "Brazil", value: 9448 },
       { id: "PT", name: "Portugal", value: 0 }, // No circle or value for Portugal
-      { id: "FR", name: "France", value: 4500000 },
-      { id: "CV", name: "Cape Verde", value: 925 },
-      { id: "GW", name: "Guinea-Bissau", value: 781 },
-      { id: "ST", name: "Sao Tome and Principe", value: 564 },
-      { id: "AO", name: "Angola", value: 8170 },
-      { id: "MZ", name: "Mozambique", value: 6903 },
-      { id: "DE", name: "Germany", value: 100 }
+      { id: "FR", name: "France", value: 178019 },
+      { id: "CV", name: "Cape Verde", value: 0 },
+      { id: "GW", name: "Guinea-Bissau", value: 0 },
+      { id: "ST", name: "Sao Tome and Principe", value: 0 },
+      { id: "AO", name: "Angola", value: 0 },
+      { id: "MZ", name: "Mozambique", value: 0 },
+      { id: "DE", name: "Germany", value: 124710 },
+      { id: "AU", name: "Australia", value: 29025 }, // Australia
+      { id: "CH", name: "Switzerland", value: 207451 } // Switzerland
     ];
   }
 
